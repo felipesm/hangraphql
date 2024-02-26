@@ -16,4 +16,5 @@ public class TaxController {
     public Float shipping(@Argument Float price, @Argument Float weight) {
         return taxService.shippingTax(price, weight);
     }
+
 }

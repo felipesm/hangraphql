@@ -14,11 +14,11 @@ public class TaxService {
 
     private Float getPercentage(Float weight) {
         if (weight < 4F)
-            return 10.2F;
+            return 7.2F;
 
         if (weight < 20F)
-            return 21.9F;
+            return 9.1F;
 
-        return 33.7F;
+        return 13.3F;
     }
 }

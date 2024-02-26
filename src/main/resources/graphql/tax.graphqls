@@ -1,3 +1,11 @@
+type Voucher {
+    id: String
+    value: Float
+    expire: String
+}
+
 type Query {
     shipping(price: Float, weight: Float): Float
+    voucher: Voucher
+    vouchers: [Voucher]
 }
