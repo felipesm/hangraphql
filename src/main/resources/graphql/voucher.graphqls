@@ -1,0 +1,10 @@
+type Voucher {
+    id: String
+    percentage: Float
+    expire: String
+}
+
+extend type Query {
+    voucher(id: String): Voucher
+    vouchers: [Voucher]
+}

@@ -15,7 +15,7 @@ public class VoucherService {
 
 
     public Voucher getVoucher(String id) {
-        return voucherRepository.findById(id).get();
+        return voucherRepository.findById(id).orElse(null);
     }
 
     public List<Voucher> getVouchers() {

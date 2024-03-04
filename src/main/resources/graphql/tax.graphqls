@@ -1,11 +1,3 @@
-type Voucher {
-    id: String
-    percentage: Float
-    expire: String
-}
-
 type Query {
     shipping(price: Float, weight: Float): Float
-    voucher(id: String): Voucher
-    vouchers: [Voucher]
 }
