@@ -3,6 +3,7 @@ package com.ifdeveloper.controller;
 import com.ifdeveloper.model.Voucher;
 import com.ifdeveloper.service.VoucherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -21,13 +22,13 @@ public class VoucherController {
     private VoucherService voucherService;
 
     @SchemaMapping(typeName = "Query", value = "voucher")
-    public Voucher voucher() {
-        return voucherService.voucher();
+    public Voucher voucher(@Argument String id) {
+        return voucherService.getVoucher(id);
     }
 
     @SchemaMapping(typeName = "Query", value = "vouchers")
     public List<Voucher> vouchers() {
-        return voucherService.vouchers();
+        return voucherService.getVouchers();
     }
 
     @GetMapping("/vouchers")
@@ -38,7 +39,7 @@ public class VoucherController {
 
     @PostMapping("/voucher")
     public ResponseEntity addVoucher(@RequestBody Voucher voucher) {
-        voucherService.add(voucher);
+        voucherService.addVoucher(voucher);
         return ResponseEntity.ok().build();
     }
 

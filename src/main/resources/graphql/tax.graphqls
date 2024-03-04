@@ -1,11 +1,11 @@
 type Voucher {
     id: String
-    value: Float
+    percentage: Float
     expire: String
 }
 
 type Query {
     shipping(price: Float, weight: Float): Float
-    voucher: Voucher
+    voucher(id: String): Voucher
     vouchers: [Voucher]
 }
