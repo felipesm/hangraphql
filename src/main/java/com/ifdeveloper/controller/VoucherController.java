@@ -38,6 +38,13 @@ public class VoucherController {
         return voucherService.addVoucher(voucher);
     }
 
+    @MutationMapping
+    public Boolean deleteVoucher(@Argument String id) {
+        var voucher = voucherService.getVoucher(id);
+        voucherService.deleteVoucher(voucher);
+        return true;
+    }
+
     @GetMapping("/vouchers")
     public ResponseEntity<List<Voucher>> getVouchers() {
         var vouchers = voucherService.getVouchers();

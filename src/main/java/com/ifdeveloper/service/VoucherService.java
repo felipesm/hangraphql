@@ -26,4 +26,8 @@ public class VoucherService {
         return voucherRepository.save(voucher);
     }
 
+    public void deleteVoucher(Voucher voucher) {
+        voucherRepository.delete(voucher);
+    }
+
 }

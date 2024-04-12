@@ -11,4 +11,5 @@ extend type Query {
 
 type Mutation {
     addVoucher(id: String, percentage: Float, expire: String): Voucher
+    deleteVoucher(id: String): Boolean
 }
