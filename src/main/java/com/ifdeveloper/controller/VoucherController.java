@@ -41,8 +41,11 @@ public class VoucherController {
     @MutationMapping
     public Boolean deleteVoucher(@Argument String id) {
         var voucher = voucherService.getVoucher(id);
-        voucherService.deleteVoucher(voucher);
-        return true;
+        if (voucher != null) {
+            voucherService.deleteVoucher(voucher);
+            return true;
+        }
+        return false;
     }
 
     @GetMapping("/vouchers")
