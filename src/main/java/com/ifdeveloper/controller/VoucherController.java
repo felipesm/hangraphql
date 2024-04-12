@@ -4,6 +4,7 @@ import com.ifdeveloper.model.Voucher;
 import com.ifdeveloper.service.VoucherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -31,6 +32,12 @@ public class VoucherController {
         return voucherService.getVouchers();
     }
 
+    @MutationMapping
+    public Voucher addVoucher(@Argument String id, @Argument Float percentage, @Argument String expire) {
+        var voucher = new Voucher(id, percentage, expire);
+        return voucherService.addVoucher(voucher);
+    }
+
     @GetMapping("/vouchers")
     public ResponseEntity<List<Voucher>> getVouchers() {
         var vouchers = voucherService.getVouchers();
@@ -38,7 +45,7 @@ public class VoucherController {
     }
 
     @PostMapping("/voucher")
-    public ResponseEntity addVoucher(@RequestBody Voucher voucher) {
+    public ResponseEntity addVoucherAPI(@RequestBody Voucher voucher) {
         voucherService.addVoucher(voucher);
         return ResponseEntity.ok().build();
     }

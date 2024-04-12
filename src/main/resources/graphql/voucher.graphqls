@@ -8,3 +8,7 @@ extend type Query {
     voucher(id: String): Voucher
     vouchers: [Voucher]
 }
+
+type Mutation {
+    addVoucher(id: String, percentage: Float, expire: String): Voucher
+}
