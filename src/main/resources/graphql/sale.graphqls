@@ -1,0 +1,25 @@
+type Sale {
+    id: String
+    date: String
+    total: Float
+    status: String
+    voucher: Voucher
+}
+
+input SaleInput {
+    id: String
+    date: String
+    total: Float
+    status: String
+    voucherId: String
+}
+
+extend type Query {
+    sale(id: String!): Sale
+    sales:[Sale]!
+}
+
+extend type Mutation {
+    addSale(saleInput: SaleInput!): Sale
+    deleteSale(id: String): Boolean
+}
