@@ -4,12 +4,18 @@ type Voucher {
     expire: String
 }
 
+input VoucherInput {
+    id: String
+    percentage: Float
+    expire: String
+}
+
 extend type Query {
     voucher(id: String): Voucher
     vouchers: [Voucher]
 }
 
 type Mutation {
-    addVoucher(id: String, percentage: Float, expire: String): Voucher
+    addVoucher(voucherInput: VoucherInput!): Voucher
     deleteVoucher(id: String): Boolean
 }

@@ -1,6 +1,7 @@
 package com.ifdeveloper.controller;
 
 import com.ifdeveloper.model.Voucher;
+import com.ifdeveloper.model.input.VoucherInput;
 import com.ifdeveloper.service.VoucherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
@@ -33,8 +34,8 @@ public class VoucherController {
     }
 
     @MutationMapping
-    public Voucher addVoucher(@Argument String id, @Argument Float percentage, @Argument String expire) {
-        var voucher = new Voucher(id, percentage, expire);
+    public Voucher addVoucher(@Argument VoucherInput voucherInput) {
+        var voucher = new Voucher(voucherInput.getId(), voucherInput.getPercentage(), voucherInput.getExpire());
         return voucherService.addVoucher(voucher);
     }
 
