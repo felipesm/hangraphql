@@ -21,7 +21,7 @@ public class Sale {
     @Column(nullable = false)
     private String status;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "voucher_id", nullable = false)
     private Voucher voucher;
 }
