@@ -12,7 +12,7 @@ input VoucherInput {
 
 extend type Query {
     voucher(id: String): Voucher
-    vouchers: [Voucher]
+    vouchers(page: Int = 0, size: Int = 3): [Voucher]
     vouchersByPercentage(minPercentage: Float): [Voucher]
 }
 

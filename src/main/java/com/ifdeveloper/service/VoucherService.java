@@ -3,6 +3,7 @@ package com.ifdeveloper.service;
 import com.ifdeveloper.model.Voucher;
 import com.ifdeveloper.repository.VoucherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,8 +19,8 @@ public class VoucherService {
         return voucherRepository.findById(id).orElse(null);
     }
 
-    public List<Voucher> getVouchers() {
-        return voucherRepository.findAll();
+    public List<Voucher> getVouchers(Pageable pageable) {
+        return voucherRepository.findAll(pageable).getContent();
     }
 
     public List<Voucher> getVouchersByPercentage(Float minPercentage) {

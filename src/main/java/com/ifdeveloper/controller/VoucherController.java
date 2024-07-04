@@ -4,6 +4,7 @@ import com.ifdeveloper.model.Voucher;
 import com.ifdeveloper.model.input.VoucherInput;
 import com.ifdeveloper.service.VoucherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
@@ -27,8 +28,8 @@ public class VoucherController {
     }
 
     @SchemaMapping(typeName = "Query", value = "vouchers")
-    public List<Voucher> vouchers() {
-        return voucherService.getVouchers();
+    public List<Voucher> vouchers(@Argument Integer page, @Argument Integer size) {
+        return voucherService.getVouchers(PageRequest.of(page, size));
     }
 
     @SchemaMapping(typeName = "Query", value = "vouchersByPercentage")
@@ -54,7 +55,7 @@ public class VoucherController {
 
     @GetMapping("/vouchers")
     public ResponseEntity<List<Voucher>> getVouchers() {
-        var vouchers = voucherService.getVouchers();
+        var vouchers = voucherService.getVouchers(PageRequest.of(0, 10));
         return ResponseEntity.ok(vouchers);
     }
 
