@@ -13,6 +13,7 @@ input VoucherInput {
 extend type Query {
     voucher(id: String): Voucher
     vouchers: [Voucher]
+    vouchersByPercentage(minPercentage: Float): [Voucher]
 }
 
 type Mutation {

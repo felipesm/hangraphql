@@ -31,6 +31,11 @@ public class VoucherController {
         return voucherService.getVouchers();
     }
 
+    @SchemaMapping(typeName = "Query", value = "vouchersByPercentage")
+    public List<Voucher> vouchersByPercentage(@Argument Float minPercentage)  {
+        return voucherService.getVouchersByPercentage(minPercentage);
+    }
+
     @MutationMapping
     public Voucher addVoucher(@Argument VoucherInput voucherInput) {
         var voucher = new Voucher(voucherInput.getId(), voucherInput.getPercentage(), voucherInput.getExpire());

@@ -22,6 +22,10 @@ public class VoucherService {
         return voucherRepository.findAll();
     }
 
+    public List<Voucher> getVouchersByPercentage(Float minPercentage) {
+        return voucherRepository.findByPercentageGreaterThan(minPercentage);
+    }
+
     public Voucher addVoucher(Voucher voucher) {
         return voucherRepository.save(voucher);
     }
