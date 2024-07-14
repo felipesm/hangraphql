@@ -18,5 +18,6 @@ extend type Query {
 
 type Mutation {
     addVoucher(voucherInput: VoucherInput!): Voucher
+    updateVoucher(voucherInput: VoucherInput!): Voucher
     deleteVoucher(id: String): Boolean
 }

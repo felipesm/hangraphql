@@ -28,6 +28,6 @@ public class CustomExceptionResolver extends DataFetcherExceptionResolverAdapter
                     .build();
         }
 
-        return null;
+        return GraphQLError.newError().errorType(ErrorType.BAD_REQUEST).message("Error trying processing the request").build();
     }
 }

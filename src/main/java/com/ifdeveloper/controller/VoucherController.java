@@ -44,6 +44,13 @@ public class VoucherController {
     }
 
     @MutationMapping
+    public Voucher updateVoucher(@Argument VoucherInput voucherInput) {
+        var voucher = voucherService.getVoucher(voucherInput.getId());
+        var newVoucher = new Voucher(voucher.getId(), voucherInput.getPercentage(), voucherInput.getExpire());
+        return voucherService.updateVoucher(newVoucher);
+    }
+
+    @MutationMapping
     public Boolean deleteVoucher(@Argument String id) {
         var voucher = voucherService.getVoucher(id);
         if (voucher != null) {
